@@ -1,0 +1,24 @@
+I am looking for a Java developer who can create a code for web scraping of a betting page. Here are the project details:
+
+Specific data to scrape:
+- Odds
+
+Website for web scraping:
+- Yes, I have a specific website in mind.
+- The scraped data should be updated in real-time. You must log in to the page, see the list of sports, go through each match 1 by 1 and extract the information on the betting odds.
+- Consider that the page has controls to avoid scrapping.
+- We will send you the classes that must be filled out with the information on the betting odds.
+
+Preferred format for scraped data:
+- JSON
+
+Skills and experience required:
+- Proficiency in Java programming language
+- Experience in web scraping using Java libraries and frameworks
+- Knowledge of HTML parsing and DOM manipulation
+- Familiarity with JSON data format
+
+Deliverables:
+- Java code for web scraping the specified data from the given website and saving it in JSON format.
+
+Please provide your portfolio or relevant work samples showcasing your experience in web scraping and Java programming.
