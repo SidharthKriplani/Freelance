@@ -1,0 +1,13 @@
+Gather sample data from a US State regulatory website.  Take steps such as accessing the web page, parsing its content, navigating the HTML structure and finally extracting and downloading specific data or documents linked within the page using Python. We will agree on which state.  If the state has limitations on bot use we will chose another state in order to work ethically.
+
+Final deliverable would include
+(1) a large number of pdf document files (~10,000) of on average 1MB each in which we will transfer over the files
+(2) An Excel index of the files with the meta data from the website with any descriptors such as date, party filing, etc.
+(3) code and code ownership to complete the task
+
+Data Extraction Deliverables
+Data Extraction Data Integration
+Other
+Python Data Scraping Data Science
+
+https://www.upwork.com/jobs/~0115055dbfd0cb8851
