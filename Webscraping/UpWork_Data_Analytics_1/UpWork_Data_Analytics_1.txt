@@ -1,0 +1,336 @@
+%python
+
+#title, price, availability, size, dispatch time uk, dispatch time intl, product type, signed by, presentation type, 
+
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_product_details(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Extracting the title
+    title = soup.find('h1').text.strip() if soup.find('h1') else 'Title not found'
+
+    # Extracting the price
+    price_container = soup.find('div', class_='product-info-price')
+    if price_container:
+        price = price_container.find('span', class_='price').text.strip() if price_container.find('span', class_='price') else 'Price not found'
+    else:
+        price = 'Price container not found'
+
+    return {'Title': title, 'Price': price}
+
+def scrape_product_size(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Extracting the size, excluding the <strong> element
+    size_container = soup.find('div', class_='product size')
+    if size_container:
+        # Remove the <strong> element (if exists) before extracting text
+        strong_tag = size_container.find('strong')
+        if strong_tag:
+            strong_tag.decompose()  # This removes the <strong> element from the soup
+
+        size = size_container.text.strip()
+    else:
+        size = 'Size information not found'
+
+    return size
+
+
+def extract_dispatch_time_uk(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the 'data item content' div with the specific id
+    data_item_content = soup.find('div', class_='data item content', id='custom_1604277903302_302')
+    if not data_item_content:
+        print("Data item content div with the specified id not found")
+        return
+
+    # Find the p element with 'Courier Details – UK'
+    courier_details_p = data_item_content.find('p', string=lambda text: "Courier Details – UK" in text)
+    if not courier_details_p:
+        print("p element with 'Courier Details – UK' not found")
+        return
+
+    # Find the next p element
+    next_p = courier_details_p.find_next_sibling('p')
+    if not next_p:
+        print("Next p element not found")
+        return
+
+    def word_to_num(word):
+        mapping = {
+            'one': 1, 'two': 2, 'three': 3, 'four': 4, 
+            'five': 5, 'six': 6, 'seven': 7, 'eight': 8, 'nine': 9
+        }
+        return mapping.get(word.lower())
+
+    text_parts = next_p.text.split()
+    if 'within' in text_parts:
+        within_index = text_parts.index('within')
+        if within_index + 1 < len(text_parts):
+            dispatch_time_word = text_parts[within_index + 1]
+            dispatch_time_number = word_to_num(dispatch_time_word)
+            if dispatch_time_number is not None:
+                return dispatch_time_number
+            else:
+                print(f"'{dispatch_time_word}' is not a number or not within the expected range.")
+    else:
+        print("'within' word not found in the next p element")
+
+
+
+def extract_dispatch_time_international(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the 'data item content' div with the specific id
+    data_item_content = soup.find('div', class_='data item content', id='custom_1604277903302_302')
+    if not data_item_content:
+        print("Data item content div with the specified id not found")
+        return
+
+    dispatch_times = {}
+
+    # Helper function to extract dispatch time
+    def get_dispatch_time(section_title):
+        section_p = data_item_content.find('p', string=lambda text: section_title in text)
+        if section_p:
+            next_p = section_p.find_next_sibling('p')
+            if next_p:
+                text_parts = next_p.text.split()
+                if 'within' in text_parts:
+                    within_index = text_parts.index('within')
+                    if within_index + 1 < len(text_parts):
+                        dispatch_time_word = text_parts[within_index + 1]
+                        try:
+                            return int(dispatch_time_word)
+                        except ValueError:
+                            print(f"'{dispatch_time_word}' is not a number.")
+                            return None
+            else:
+                print(f"Next p element after '{section_title}' not found")
+        else:
+            print(f"p element with '{section_title}' not found")
+
+    # Extracting dispatch time for International
+    dispatch_times['International'] = get_dispatch_time('Courier Details – International (non-UK)')
+
+    return dispatch_times
+
+
+
+def extract_product_type(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the 'data item content' div with the id 'additional'
+    data_item_content = soup.find('div', class_='data item content', id='additional')
+    if not data_item_content:
+        print("Data item content div with the specified id 'additional' not found")
+        return
+
+    # Find the 'product-attribute-specs-table'
+    specs_table = data_item_content.find('table', id='product-attribute-specs-table')
+    if not specs_table:
+        print("Product attribute specs table not found")
+        return
+
+    # Search for the 'Product type' row in the table
+    for tr in specs_table.find_all('tr'):
+        th = tr.find('th')
+        if th and th.get_text().strip() == 'Product type':
+            td = tr.find('td')
+            if td:
+                return td.get_text().strip()
+
+    print("Product type not found")
+    return None
+
+
+def extract_signed_by(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the 'data item content' div with the id 'additional'
+    data_item_content = soup.find('div', class_='data item content', id='additional')
+    if not data_item_content:
+        print("Data item content div with the specified id 'additional' not found")
+        return
+
+    # Find the 'product-attribute-specs-table'
+    specs_table = data_item_content.find('table', id='product-attribute-specs-table')
+    if not specs_table:
+        print("Product attribute specs table not found")
+        return
+
+    # Search for the 'Signed by' row in the table
+    for tr in specs_table.find_all('tr'):
+        th = tr.find('th')
+        if th and th.get_text().strip() == 'Signed by':
+            td = tr.find('td')
+            if td:
+                return td.get_text().strip()
+
+    print("Signed by not found")
+    return None
+
+
+def extract_presentation_type(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Find the 'data item content' div with the id 'additional'
+    data_item_content = soup.find('div', class_='data item content', id='additional')
+    if not data_item_content:
+        print("Data item content div with the specified id 'additional' not found")
+        return
+
+    # Find the 'product-attribute-specs-table'
+    specs_table = data_item_content.find('table', id='product-attribute-specs-table')
+    if not specs_table:
+        print("Product attribute specs table not found")
+        return
+
+    # Search for the 'Presentation type' row in the table
+    for tr in specs_table.find_all('tr'):
+        th = tr.find('th')
+        if th and th.get_text().strip() == 'Presentation type':
+            td = tr.find('td')
+            if td:
+                return td.get_text().strip()
+
+    print("Presentation type not found")
+    return None
+
+
+def check_add_to_cart_presence(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return False
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Search for the 'Add to Cart' anchor element
+    add_to_cart_link = soup.find('a', class_='action tocart primary', text='Add to Cart')
+    if add_to_cart_link:
+        return 'Available'
+    else:
+        return False
+
+#all the above functions are only to return the required details. Main functions below
+
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+page_url = "https://www.icons.com/players/a-k.html"
+
+def extract_player_names_and_links(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return pd.DataFrame()  # Return empty DataFrame in case of failure
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    player_divs = soup.find_all('div', style="padding-bottom:10px")
+    player_info = []
+
+    for div in player_divs:
+        a_tag = div.find('a')
+        if a_tag and 'href' in a_tag.attrs:
+            player_name = a_tag.get_text().strip()
+            if player_name[0].upper() in ['A', 'B', 'C']:
+                player_link = a_tag['href']
+                player_info.append({'Name': player_name, 'Link': player_link})
+
+    return pd.DataFrame(player_info)
+
+
+def extract_product_urls_from_page(url):
+    response = requests.get(url)
+    if response.status_code != 200:
+        print("Failed to retrieve the webpage")
+        return []
+
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Assuming that product links are 'a' tags with class 'product photo product-item-photo'
+    product_links = soup.find_all('a', class_='product photo product-item-photo')
+
+    # Extract 'href' attribute from each link
+    product_urls = [link.get('href') for link in product_links if link.get('href')]
+
+    return product_urls
+
+player_df = extract_player_names_and_links(page_url)
+player_df['Product URLs'] = player_df['Link'].apply(extract_product_urls_from_page)
+exploded_df = player_df.explode('Product URLs')
+exploded_df = exploded_df.reset_index(drop=True)
+
+
+def extract_all_details(url):
+    product_details = {
+        "Title": scrape_product_details(url)['Title'],
+        "Price": scrape_product_details(url)['Price'],
+        "Size": scrape_product_size(url),
+        "Dispatch Time UK": extract_dispatch_time_uk(url),
+        "Dispatch Time International": extract_dispatch_time_international(url),
+        "Product Type": extract_product_type(url),
+        "Signed By": extract_signed_by(url),
+        "Presentation Type": extract_presentation_type(url),
+        "Availability": check_add_to_cart_presence(url)
+    }
+    return product_details
+
+final_df = pd.DataFrame()
+
+# Iterate over each row in exploded_df and get details for each product URL
+for index, row in exploded_df.iterrows():
+    product_details = extract_all_details(row['Product URLs'])
+    product_details['Name'] = row['Name']
+    product_details['Link'] = row['Link']
+    product_details['Product URLs'] = row['Product URLs']
+    final_df = final_df.append(product_details, ignore_index=True)
+
+# Reorder columns as per requirement
+final_df = final_df[['Name', 'Link', 'Product URLs', 'Title', 'Price', 'Availability', 'Size', 'Dispatch Time UK', 'Product Type', 'Signed By', 'Presentation Type']]
+
+# Reset index if required
+final_df.reset_index(drop=True, inplace=True)
+
+final_df
