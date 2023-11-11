@@ -1,0 +1,10 @@
+Hello,
+
+I need someone to write me a script (preferably python) that can be utilised to go on the imdb.com website for a list of urls I can specify from a file such as https://www.imdb.com/title/tt13968674/ and find the Country of origin for a movie and parse that information and save it for me in another file in the following format. First column containing the titleid, in this case tt13968674 and second column to contain the countries of origin as an array. See attached screenshot for location.
+The script need to be able to parse without difficulties and for any titleid i specify.
+
+Skills and Expertise
+Python Python Script Scripting Data Mining
+
+https://www.upwork.com/jobs/~0198ef6c502e8aa714?referrer_url_path=/details/~0198ef6c502e8aa714
+
