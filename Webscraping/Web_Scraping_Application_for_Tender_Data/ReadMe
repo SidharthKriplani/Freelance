@@ -1,1 +1,45 @@
+TENDER DATA SCRAPER TO CLICKUP API INTEGRATION
+
+Website Links: https://mahatenders.gov.in
+https://www.eprocure.gov.in/eprocure/app
+
+Integration App: ClickUp
+
+Brief: Develop a web scraping application that can extract tender data from the predetermined website. The scraped data should be seamlessly integrated and transferred into the ClickUp project management platform.
+
+Key responsibilities for this job include:
+
+- Developing a web scraping application
+- Extracting tender data from specified websites at regular time intervals
+- Transferring the scraped data into ClickUp
+
+Data Update Frequency: Daily
+
+Input Option: Organisation Name
+
+Data points for each tender:
+
+1. Organisation Chain
+2. Tender Reference Number
+3. Tender ID
+4. Form Of Contract
+5. No. of Covers
+6. Tender Fee in ₹
+7. EMD Amount in ₹
+8. Title
+9. Tender Value in ₹
+10. Product Category
+11. Bid Opening Place
+12. Published Date
+13. Bid Opening Date
+14. Bid Submission Start Date
+15. Bid Submission End Date
+16. NIT Document (PDF)
+17. Name (Tender Inviting Authority)
+18. Address (Tender Inviting Authority)
+
+
+*There should be no duplicate data being uploaded onto ClickUp, only the “new” data that should be appended to the previous data on the ClickUp app and one data point will be there for days and months on the website. Bypassing the Captcha is necessary.
+
+The format in which the data must be uploaded via the clickup API is stated in the document
 
