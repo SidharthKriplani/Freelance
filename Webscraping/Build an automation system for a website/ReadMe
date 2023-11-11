@@ -1,0 +1,5 @@
+- Create an automation system for a WordPress website that displays sports betting picks
+- Website should be able to support a large user base
+- Scrape data from the web in a way where said data can refresh automatically
+- Python/Selenium Web Scraping experience is necessary
+- This project should last around one week (10-15 hours), with an opportunity for similar projects in the future
