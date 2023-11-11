@@ -42,4 +42,4 @@ Data points for each tender:
 *There should be no duplicate data being uploaded onto ClickUp, only the “new” data that should be appended to the previous data on the ClickUp app and one data point will be there for days and months on the website. Bypassing the Captcha is necessary.
 
 The format in which the data must be uploaded via the clickup API is stated in the document
-
+(in case the document is not available in this directory, click on this accessible link: https://docs.google.com/document/d/1OyEJIo871uZrA4VHi9VZwpxHhrrrQMen/edit?usp=sharing&ouid=104076668924283433090&rtpof=true&sd=true)
