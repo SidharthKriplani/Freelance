@@ -1,1 +1,13 @@
-something
+Task:
+Icons.com is a seller of authentic, exclusive, and signed football memorabilia. Your task is to acquire data from https://www.icons.com/ to explore which footballer’s signature is worth the most from current stars with surnames A-C.
+
+Requirements:
+You are free to use any tools to complete this task. We only require the following:
+1. The data collection from Icons must be automated.
+2. You are only required to get products listed for current players A-C (including all surnames ending in C).
+3. The raw data collection must include: “Title, Price, Availability, Size, Dispatch Time, Product Type, Signed By, Presentation”.
+4. Include a brief methodology on the steps you took in analysing the data.
+5. Include suggestions of potential story angles based on the collected data.
+6. You must share any code you wrote to complete the task.
+
+Once you have completed the tasks, please send your methodology report, code and data.
