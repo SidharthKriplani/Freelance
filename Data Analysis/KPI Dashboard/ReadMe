@@ -1,0 +1,33 @@
+SCOPE
+
+Description:
+
+We are a maintenance business, and we use a system called Tradify to manage our projects, we need to set some KPIs time frames on how fast we respond to jobs and close out each step of the work flow. We also need to create simple dashboards to show particular KPIs (Example: Value of jobs in progress or Number of jobs scheduled this week). We want to use Power Bi to review the KPI dash board and open to suggestions on how we review countdown timer.
+
+Goal:
+
+We want to scrape information from a website to then populate a Power BI dashboard to show high level KPIs
+
+We want to scrape information from a website (Tradify) and mirror information but adding countdown timers to each job (See attached) –
+
+This needs to be updated regularly (Every 5 mins if possible?). We also need to make it easy if we decided to add or change a status in the workflow so that the new status info will also be captured in the countdown clock. It would be good if we can hyper link the job number and it bring you back to Tradify in the new display with the countdown timers
+
+Notes:
+1. We need to consider what happens when we add/delete/complete a job
+2. We will provide a list of KPI times for each status in the work flow
+3. We will need approx. 6 – 8 custom dashboards in power BI (Information to be scraped from Tradify)
+
+Tradify’s website: https://www.tradifyhq.com/au
+
+Can the countdown timers be set up in Power BI?
+
+Budget: $1k - $2K (AUD)
+
+Turnaround time: ASAP
+
+
+Skills and Expertise
+Business Intelligence Microsoft Power BI
+
+
+https://www.upwork.com/jobs/~011049c2cd12ec0884
