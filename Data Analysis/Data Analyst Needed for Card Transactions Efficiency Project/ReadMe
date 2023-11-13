@@ -1,0 +1,38 @@
+I'm looking for a data expert.
+
+Our company attempts approximately 20,000 recurring card payments per month, with a success rate of about 30%
+
+We have a years worth of data (showing payment amount, response code, response description, date, time, etc)
+
+We want to understand how we can improve the efficiency of our card transaction processes. We want someone who can analyse the data and let us know what rules we should enforce to improve efficiency.
+
+EXAMPLE 1:
+it might be that if a card gives the response description "card is lost / stolen," subsequent attempts on this card are not worthwhile.
+
+EXAMPLE 2:
+it might be that if a card is attempted 20 times without the response description "approved", subsequent attempts on this card are not worthwhile.
+
+PROJECT OUTLINE:
+1. Initially it will be useful to jump on a call to understand how you will be able to help us with this project.
+
+2. If we move forward together with the project, we can suggest some rules as starting points.
+
+3. You will need to download our data (csv format) and do a small amount of cleaning / segmentation, I can talk you through it but don't have a powerful enough computer.
+
+4. You will analyse the data and help us spot inefficiencies and opportunities to improve.
+
+ABOUT YOU
+- great english
+- good at communicating "data speak" in plain english
+- expert data analyst with previous experience
+- fully read and grasped this description, confident you can help
+- rates negotiable, feel free to bid your price
+
+Data Analytics Deliverables
+Dashboard
+Data Analytics Skills
+Data Analytics
+Other
+Data Analysis Microsoft Excel Data Visualization Statistics SQL
+
+https://www.upwork.com/jobs/~01b8be6be7e0a1751c
