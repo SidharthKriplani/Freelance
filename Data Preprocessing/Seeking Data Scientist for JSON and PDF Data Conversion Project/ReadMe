@@ -1,0 +1,31 @@
+Hello,
+
+We are looking for a skilled Data Scientist to assist in a project. The core task involves converting a mix of JSON files and PDF documents into structured data.
+
+Project Overview:
+• JSON Analysis: Review and analyze JSON files, which contain metadata and summaries.
+• PDF Conversion: Convert PDF documents into structured text. The PDFs contain the full content of the texts essential to the project.
+• Output Format: Ideally, the final format of the texts should be in Markdown, to facilitate integration with large language models.
+• Additional Conversion: While not mandatory, knowledge in converting Markdown to HTML is highly beneficial, as the output will also be displayed on a website.
+
+
+Key Requirements:
+• Automation: The ability to automate this process is critical, as the project involves processing thousands of records. Manual conversion is not feasible due to the volume of data.
+• Sample Task: A sample of 15 records will be provided for a trial conversion. This will help assess your approach and the quality of your work.
+• Time & Cost Estimate: We would like you to analyze the sample and provide an estimated timeframe and cost for the entire project.
+
+
+Ideal Candidate:
+• Experienced in handling and converting large datasets.
+• Proficient in data structuring and formatting (specifically JSON, PDF, Markdown, and HTML).
+• Capable of developing an automated solution for data conversion.
+
+If this project aligns with your expertise and you are excited about the opportunity to contribute to a significant data conversion initiative, please respond with your estimated time and cost for the sample task. We are eager to find the right individual or team for this endeavor and look forward to your proposals.
+
+Thank you for considering this opportunity.
+
+
+Skills and Expertise
+Python JSON Data Mining Data Extraction LangChain Markdown PDF PDF Conversion
+
+https://www.upwork.com/jobs/~017365834aac2b5377
