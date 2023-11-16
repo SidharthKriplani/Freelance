@@ -1,0 +1,27 @@
+Marty hired you, a team of budding data scientists, to help him address this problem. He supplied you with some data related to sales and other variables (see the attached data file). In addition, he was able to provide you with the following information, although he was not sure the extent to which they would be relevant to your analysis:
+ The demonstrations were run by a third-party company, who were supposed to operate independently of Goodbelly salespeople, wherever the latter group was present. The company’s salespeople were also instructed to perform their functions independently of the demonstrations.
+ It costs the company an average of $0.89 to manufacture each ounce of Goodbelly products and place it in Wholefoods stores.
+ Each demonstration cost the company $157.83 on an average, including costs of products on display at the demonstration.
+ There was a single demonstration only in a certain week, typically on the same day of every week, although not always.
+ Each week is defined from a Wednesday through the following Tuesday, and sales figures include data for the Tuesday that ended a week. Thus, the data reported for 5/04/2010 covered the week from 04/28/2010 through 5/04/2010, including both dates.
+ Salespersons were paid an annual compensation of $42, 000 to $68, 000 (average = $57, 501), including all perks.
+Marty has made it clear that these are all the data that his team can provide. Your job is to conduct the necessary analyses to help Marty address the issue he is facing. Additionally, you should try to extract any other insight that you can from the information provided either in the case, here, or in the data set attached – insight that might be related to the issues facing Marty or related to other issues for the company. In other words, your job is to maximally exploit the available information to help the company’s management (subject to caveats, assumptions, etc., that would require future investigations).
+
+Modeling Guidelines
+Causal modeling, even one based on linear models, can be complex and elaborate, depending on how much resource we devote to it. For this project, I would like to set some boundaries in terms of how far I expect you to go. The following guidelines should help you understand those boundaries.
+(1) I would like you to utilize MLR as the technique of choice for modeling the Goodbelly problem. You are not required to use additional techniques that might be relevant, but if you do, please submit the results from those analyses in a separate document or as a properly labeled Appendix to the main Goodbelly report.
+(2) The first thing you should do, before beginning the modeling exercise, is to try to “get a feel for the data”, i.e., understand your data, especially, its structure. For instance, the DEMO variables are laid out in a certain manner and understanding these variables will be critical to modeling.
+
+
+Skills and Expertise
+Data Science
+Data Analysis
+Statistics
+Data Modeling
+Business Intelligence
+Microsoft Excel
+Analytics
+multiple linear regression
+
+
+https://www.upwork.com/jobs/~01908f123addf67575
